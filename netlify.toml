@@ -1,0 +1,15 @@
+# Netlify settings. Plain static site: no build step, publish this folder.
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Videos and thumbnails rarely change: let browsers cache them for a week.
+[[headers]]
+  for = "/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

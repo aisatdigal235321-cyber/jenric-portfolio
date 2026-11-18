@@ -1,0 +1,8 @@
+# OS / editor clutter
+.DS_Store
+Thumbs.db
+
+# local tool folders
+.vercel/
+.netlify/
+*.part.mp4

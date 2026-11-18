@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jenric Digal · AI Video Editor</title>
+  <meta name="description" content="Portfolio of Jenric Digal, AI video editor: ads, UGC, music videos and short films in realistic and Pixar-style 3D.">
+  <meta name="theme-color" content="#121012">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="branch" viewBox="0 0 440 320" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="petalFill" cx="50%" cy="95%" r="95%">
+        <stop offset="0" stop-color="#fff2f6"/>
+        <stop offset=".55" stop-color="#ffbccf"/>
+        <stop offset="1" stop-color="#f27ea2"/>
+      </radialGradient>
+      <linearGradient id="bark" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b48388"/>
+        <stop offset="1" stop-color="#6e4a50"/>
+      </linearGradient>
+      <!-- one notched sakura petal, pointing up from the flower's center -->
+      <path id="pt" d="M0 0 C-8 -5 -9 -15 -4 -21 L0 -17.5 L4 -21 C9 -15 8 -5 0 0 Z" fill="url(#petalFill)"/>
+      <g id="bloom">
+        <use href="#pt"/><use href="#pt" transform="rotate(72)"/><use href="#pt" transform="rotate(144)"/>
+        <use href="#pt" transform="rotate(216)"/><use href="#pt" transform="rotate(288)"/>
+        <circle r="4" fill="#d94f7c"/>
+        <g fill="#ffe08a">
+          <circle cx="0" cy="-7" r="1.3"/><circle cx="6.6" cy="-2.2" r="1.3"/><circle cx="4.1" cy="5.7" r="1.3"/>
+          <circle cx="-4.1" cy="5.7" r="1.3"/><circle cx="-6.6" cy="-2.2" r="1.3"/>
+        </g>
+      </g>
+      <g id="bud"><ellipse rx="4.5" ry="7" fill="#f592b2"/><path d="M-4 3 Q0 9 4 3" fill="#6b8f5a"/></g>
+    </defs>
+
+    <!-- bough and twigs, thick at the corner and thinner toward the tips -->
+    <g fill="none" stroke="#9b6b71" stroke-linecap="round">
+      <path d="M452 2 C400 14 345 30 290 54" stroke-width="13"/>
+      <path d="M290 54 C240 78 190 98 140 114" stroke-width="9"/>
+      <path d="M140 114 C100 127 68 140 26 166" stroke-width="5.5"/>
+      <path d="M306 46 C306 82 294 112 272 142" stroke-width="6"/>
+      <path d="M272 142 C263 158 250 172 234 186" stroke-width="3.5"/>
+      <path d="M206 90 C194 62 198 40 214 18" stroke-width="4.5"/>
+      <path d="M112 124 C100 152 104 178 118 200" stroke-width="3.5"/>
+      <path d="M368 22 C356 50 364 72 384 94" stroke-width="5"/>
+      <path d="M62 146 C48 132 40 116 38 98" stroke-width="2.6"/>
+      <path d="M240 76 C244 100 236 118 224 132" stroke-width="2.6"/>
+    </g>
+
+    <!-- blossoms -->
+    <use href="#bloom" transform="translate(292 56) rotate(10) scale(1.25)"/>
+    <use href="#bloom" transform="translate(262 68) rotate(-20) scale(.95)"/>
+    <use href="#bloom" transform="translate(304 92) rotate(30) scale(1.05)"/>
+    <use href="#bloom" transform="translate(278 128) rotate(5) scale(1.15)"/>
+    <use href="#bloom" transform="translate(250 152) rotate(-35) scale(.85)"/>
+    <use href="#bloom" transform="translate(236 184) rotate(18) scale(1)"/>
+    <use href="#bloom" transform="translate(214 22) rotate(-12) scale(1)"/>
+    <use href="#bloom" transform="translate(198 50) rotate(25) scale(.85)"/>
+    <use href="#bloom" transform="translate(222 84) rotate(-8) scale(.95)"/>
+    <use href="#bloom" transform="translate(224 132) rotate(40) scale(.8)"/>
+    <use href="#bloom" transform="translate(152 110) rotate(15) scale(1.15)"/>
+    <use href="#bloom" transform="translate(126 100) rotate(-25) scale(.85)"/>
+    <use href="#bloom" transform="translate(116 198) rotate(8) scale(1)"/>
+    <use href="#bloom" transform="translate(104 160) rotate(-30) scale(.9)"/>
+    <use href="#bloom" transform="translate(30 164) rotate(20) scale(1.05)"/>
+    <use href="#bloom" transform="translate(64 142) rotate(-10) scale(.8)"/>
+    <use href="#bloom" transform="translate(38 100) rotate(35) scale(.9)"/>
+    <use href="#bloom" transform="translate(370 30) rotate(-15) scale(.95)"/>
+    <use href="#bloom" transform="translate(384 94) rotate(12) scale(1.15)"/>
+    <use href="#bloom" transform="translate(360 64) rotate(-28) scale(.85)"/>
+    <use href="#bloom" transform="translate(334 40) rotate(22) scale(.9)"/>
+    <use href="#bloom" transform="translate(180 98) rotate(-5) scale(.75)"/>
+
+    <!-- buds -->
+    <use href="#bud" transform="translate(84 134) rotate(-60)"/>
+    <use href="#bud" transform="translate(320 120) rotate(25)"/>
+    <use href="#bud" transform="translate(188 26) rotate(-40)"/>
+    <use href="#bud" transform="translate(130 214) rotate(30)"/>
+    <use href="#bud" transform="translate(398 110) rotate(10)"/>
+  </svg>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+  <header class="topbar">
+    <a href="#top" class="brand" aria-label="Back to top">
+      <span class="hanko" id="brand">JD</span>
+      <span class="wordmark" id="brandName">Jenric Digal</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#realistic" data-style-label="realistic">Realistic</a>
+      <a href="#animated" data-style-label="animated">Pixar-style 3D</a>
+      <a href="#services">Services</a>
+      <a href="#tools">Tools</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="btn btn-dark btn-sm" href="#contact">Hire me</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-text">
+        <div class="intro">
+          <img class="avatar" src="img/jen.jpg" alt="Portrait of Jenric Digal" width="72" height="72">
+          <p>Hi, I'm <strong id="nickname">Jen</strong></p>
+        </div>
+        <h1><span id="name">Jenric Digal</span><span class="role" id="role">AI Video Editor</span></h1>
+        <p class="tagline" id="tagline"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#realistic">View work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <figure class="hero-reel" id="heroReel">
+        <div class="frame">
+          <div class="frame-media" id="heroMedia"></div>
+          <div class="frame-hud mono">
+            <span class="rec">● REEL</span>
+            <span id="heroTc">00:00:00:00</span>
+          </div>
+        </div>
+        <figcaption class="mono" id="heroCaption">Featured reel</figcaption>
+      </figure>
+    </section>
+
+    <section class="work" id="realistic" data-style="realistic">
+      <p class="notice" id="notice" hidden></p>
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span lang="ja">写実</span><span class="count"></span></p>
+          <h2 data-style-label="realistic">Realistic</h2>
+          <p class="section-sub">Commercials, UGC and music videos made to pass as filmed footage.</p>
+        </div>
+        <div class="filters" role="tablist" aria-label="Filter realistic projects by category"></div>
+      </div>
+      <div class="grid"></div>
+    </section>
+
+    <section class="work" id="animated" data-style="animated">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span lang="ja">アニメ</span><span class="count"></span></p>
+          <h2 data-style-label="animated">Pixar-style 3D</h2>
+          <p class="section-sub">Animated 3D characters and short stories, with the same look from the first shot to the last.</p>
+        </div>
+        <div class="filters" role="tablist" aria-label="Filter animated projects by category"></div>
+      </div>
+      <div class="grid"></div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span lang="ja">仕事</span></p>
+          <h2>Services</h2>
+        </div>
+      </div>
+      <ul class="service-list">
+        <li>
+          <h3>Ad creatives</h3>
+          <p>15 to 60 second ads for social, cut around the first three seconds and exported in 16:9, 9:16 and 1:1.</p>
+        </li>
+        <li>
+          <h3>UGC videos</h3>
+          <p>Vertical videos with one AI presenter who looks the same in every shot and every variation.</p>
+        </li>
+        <li>
+          <h3>Music videos</h3>
+          <p>Visuals cut to the beat, with transitions and color built around the song.</p>
+        </li>
+        <li>
+          <h3>Short films &amp; animation</h3>
+          <p>Short stories in a realistic or Pixar-style 3D look, with characters that stay on model.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="toolkit" id="tools">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span lang="ja">道具</span></p>
+          <h2>Tools</h2>
+          <p class="section-sub">What I use at each step, from the first frame to the final export.</p>
+        </div>
+      </div>
+      <div class="tool-groups" id="toolGroups"></div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow"><span lang="ja">経歴</span></p>
+          <h2>Experience</h2>
+        </div>
+      </div>
+      <div class="exp-cols">
+        <article class="job">
+          <header class="job-head">
+            <h3>Multimedia Artist</h3>
+            <p class="mono">2022 – 2026</p>
+          </header>
+          <ul class="job-points">
+            <li>Designed visual content for digital and print, including social media graphics, marketing materials and promotional assets.</li>
+            <li>Created illustrations, photo edits and digital artwork that follow brand guidelines and project goals.</li>
+            <li>Produced and edited video content with motion graphics, transitions, sound and visual effects.</li>
+            <li>Worked with clients, marketing teams and other creatives to develop visual concepts.</li>
+            <li>Managed several creative projects at once while meeting deadlines and keeping quality high.</li>
+            <li>Prepared final files for print, web and social media.</li>
+          </ul>
+          <ul class="traits" aria-label="Skills used in this role">
+            <li>Graphic design</li><li>Video editing</li><li>Motion graphics</li><li>Photo editing</li>
+            <li>Branding</li><li>Typography</li><li>Content creation</li><li>Visual communication</li>
+          </ul>
+        </article>
+
+        <div class="exp-side">
+          <div class="exp-block">
+            <h3 class="exp-label">Education</h3>
+            <ul class="edu">
+              <li><strong>Asian Institute of Science and Technology</strong></li>
+              <li><strong>Philippine Christian University</strong><span>Technical-Vocational-Livelihood: Information &amp; Communications Technology</span></li>
+              <li><strong>Infant Jesus Academy</strong></li>
+              <li><strong>Malinta Elementary School</strong></li>
+            </ul>
+          </div>
+          <div class="exp-block">
+            <h3 class="exp-label">Other skills</h3>
+            <ul class="traits">
+              <li>Java programming (intermediate)</li><li>Teamwork</li><li>Communication</li>
+              <li>Problem solving</li><li>Time management</li><li>Collaboration</li>
+            </ul>
+          </div>
+          <div class="exp-block">
+            <h3 class="exp-label">Languages</h3>
+            <ul class="langs">
+              <li><strong>English</strong><span>Fluent</span></li>
+              <li><strong>Filipino</strong><span>Native</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-cols">
+        <div>
+          <p class="eyebrow"><span lang="ja">自己紹介</span></p>
+          <h2>About</h2>
+          <p class="about-text">I'm a Computer Science student and AI video editor. I write the prompts, generate the stills and shots, then do the part that makes it watchable: pacing, continuity, sound and color. Every project here was built end to end by me.</p>
+          <p class="about-text">Off the clock I'm a quiet, easygoing gamer who would rather keep things simple. It shows in how I work: calm, focused and hard to rush.</p>
+          <ul class="traits" aria-label="A few things about me">
+            <li>Night owl</li>
+            <li>Gamer at heart</li>
+            <li>Introvert</li>
+            <li>Low drama</li>
+            <li>Always got headphones on</li>
+          </ul>
+        </div>
+        <div class="pipeline">
+          <h3>How I work</h3>
+          <ol>
+            <li><span class="mono">01</span><div><strong>Brief &amp; storyboard</strong><p>Goals, audience, platform and a shot list.</p></div></li>
+            <li><span class="mono">02</span><div><strong>Still frames</strong><p>A key frame per shot to lock characters and style.</p></div></li>
+            <li><span class="mono">03</span><div><strong>Animation</strong><p>Stills turned into clips, regenerated until they hold up.</p></div></li>
+            <li><span class="mono">04</span><div><strong>Edit, sound &amp; grade</strong><p>Pacing, sound design and a consistent color grade.</p></div></li>
+            <li><span class="mono">05</span><div><strong>Delivery</strong><p>Exports for each platform and aspect ratio.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-card">
+        <div>
+          <p class="eyebrow"><span lang="ja">ご連絡</span></p>
+          <h2>Get in touch</h2>
+          <p class="contact-sub">Send me a short brief: what the video is for, where it will run and when you need it.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="email" id="emailText" href="#"></a>
+          <a class="phone" id="phoneText" href="#" hidden></a>
+          <div class="contact-row">
+            <a class="btn btn-primary" id="mailBtn" href="#">Email me</a>
+            <button class="btn btn-ghost" id="copyEmail" type="button">Copy email</button>
+          </div>
+          <ul class="links" id="links"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="wave" aria-hidden="true"></div>
+  <footer class="footer">
+    <span>© <span id="year"></span> <span id="footName">Jenric Digal</span>. All rights reserved.</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <dialog class="player" id="player" aria-label="Video player">
+    <div class="player-inner">
+      <button class="close" id="closePlayer" type="button" aria-label="Close video">✕</button>
+      <div class="player-media" id="playerMedia"></div>
+      <div class="player-info">
+        <p class="mono meta" id="playerMeta"></p>
+        <div class="variants" id="playerVariants" role="tablist" aria-label="Hook versions"></div>
+        <h3 id="playerTitle"></h3>
+        <p id="playerDesc"></p>
+        <ul class="tools" id="playerTools"></ul>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="projects.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
